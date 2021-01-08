@@ -1,0 +1,28 @@
+<h2> Users </h2>        
+<div class="row">
+    <div class="col-3">
+        <input [(ngModel)]="filters.keyword" (input)="getUsers()" type="text"
+             class="form-control" id="filterInput" placeholder="Type to filter by Email">
+    </div>
+    <div class="col">
+        <div *ngIf='filters.keyword' class="form-text text-muted">Filtered by: {{filters.keyword}}</div>
+    </div>
+</div>
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Full Name </th>
+            <th> Email </th>
+            <th> Mobile </th>
+            <th> Address </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let user of users" >
+            <td> {{ user.firstName }} {{ user.middleName }} {{ user.lastName }} </td>
+            <td> {{ user.email }} </td>
+            <td> {{ user.mobile }} </td>
+            <td> {{ user.address }} </td>
+        </tr>
+    </tbody>
+</table>

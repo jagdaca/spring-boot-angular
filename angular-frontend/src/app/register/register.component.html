@@ -1,0 +1,167 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Register </h3>
+    <form 
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+    >
+    
+        <div class="form-group">
+            <label> First Name </label>
+            <input
+                type="text"
+                class="form-control"
+                name="firstName"
+                [(ngModel)]="form.firstName"
+                required
+                #firstName="ngModel"
+            >
+            <div class="alert-danger" *ngIf="firstName.touched && firstName.invalid 
+                || f.submitted && firstName.invalid">
+                <div *ngIf="firstName.errors.required">First Name is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label> Middle Name </label>
+            <input
+                type="text"
+                class="form-control"
+                name="middleName"
+                [(ngModel)]="form.middleName"
+                required
+                #middleName="ngModel"
+            >
+            <div class="alert-danger" *ngIf="middleName.touched && middleName.invalid
+            || f.submitted && middleName.invalid">
+                <div *ngIf="middleName.errors.required">Middle Name is required</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label> Last Name </label>
+            <input
+                type="text"
+                class="form-control"
+                name="lastName"
+                [(ngModel)]="form.lastName"
+                required
+                #lastName="ngModel"
+            >
+            <div class="alert-danger" *ngIf="lastName.touched && lastName.invalid
+            || f.submitted && lastName.invalid">
+                <div *ngIf="lastName.errors.required">Last Name is required</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label> Email Address </label>
+            <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="form.email"
+                required
+                #email="ngModel"
+                (input)="validateEmail()"
+            >
+            <div class="alert-danger" *ngIf="isInvalid || email.touched && email.invalid
+            || f.submitted && email.invalid">
+                <div *ngIf="!isInvalid && email.errors.required">Email is required</div>
+                <div *ngIf="isInvalid">Email format is invalid</div>
+            </div>
+            <!-- <div class="alert-danger" *ngIf="isInvalid">
+                <div *ngIf="isInvalid">Email format is invalid</div>
+            </div> -->
+        </div>
+
+        <div class="form-group">
+            <label> Password </label>
+            <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="6"
+                #password="ngModel"
+            >
+            <div class="alert-danger" *ngIf="password.touched && password.invalid
+            || f.submitted && password.invalid">
+                <div *ngIf="password.errors.required">Password is required</div>
+                <div *ngIf="password.errors.minlength">
+                    Password must be at least 6 characters
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label> Confirm Password </label>
+            <input
+                type="password"
+                class="form-control"
+                name="cPassword"
+                [(ngModel)]="form.cPassword"
+                required
+                minlength="6"
+                #cPassword="ngModel"
+            >
+            <div class="alert-danger" *ngIf="cPassword.touched && cPassword.invalid
+            || f.submitted && cPassword.invalid">
+                <div *ngIf="cPassword.errors.required">Password is required</div>
+                <div *ngIf="cPassword.errors.minlength">
+                    Password must be at least 6 characters
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label> Mobile </label>
+            <input
+                type="text"
+                class="form-control"
+                name="mobile"
+                [(ngModel)]="form.mobile"
+                required
+                minlength="11"
+                #mobile="ngModel"
+            >
+            <div class="alert-danger" *ngIf="mobile.touched && mobile.invalid
+                || f.submitted && mobile.invalid">
+                <div *ngIf="mobile.errors.required">Mobile is required</div>
+                <div *ngIf="mobile.errors.minlength">
+                    Mobile must be at least 11 numbers
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label> Address </label>
+            <input
+                type="test"
+                class="form-control"
+                name="address"
+                [(ngModel)]="form.address"
+                required
+                #address="ngModel"
+            >
+            <div class="alert-danger" *ngIf="address.touched && address.invalid
+            || f.submitted && address.invalid">
+                <div *ngIf="address.errors.required">Address is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button class = "btn btn-success" type="submit">Register</button>
+        </div>
+
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            Registration failed!<br />{{ errorMessage }}
+          </div>
+    
+        <div class="alert alert-success" *ngIf="isSuccessful">
+          Your registration is successful!
+        </div>
+    </form>
+    </div>
